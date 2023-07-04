@@ -20,7 +20,6 @@ app.use(logger);
 app.use("/api", api);
 
 //  ! pour servir des fichiers statics
-
 app.use(express.static(publicDir));
 app.use(serveIndex(publicDir, { icons: true }));
 
