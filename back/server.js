@@ -1,6 +1,11 @@
-console.log("toto");
-const toto = 34;
-// double click sur toto
-// puis ctrl+shift+l
-// il ecrit la ligne ci-dessous
-console.log("toto: ", toto);
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
