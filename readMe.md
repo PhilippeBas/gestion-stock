@@ -10,3 +10,11 @@ dans setting :
 3/ on place en git ignore
 
 4/ const express = require("express"):
+
+dans le packages json:
+pour le redemarrage automatique du serveur a chaque changement
+-> "scripts": {
+"start": "nodemon src/server.ts",
+"build": "tsc",
+"start:prod": "node dist/server.js"
+},
