@@ -16,6 +16,7 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
 //! middleware
 app.use(logger);
 
+//* Il va gérer tous les routes qui commence par api : donc c'est un routeur
 app.use("/api", api);
 
 //  ! pour servir des fichiers statics
