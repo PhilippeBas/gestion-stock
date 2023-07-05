@@ -14,6 +14,7 @@ const routes: Routes = [
     component: LegalComponent,
     title: 'Mention légales',
   },
+  { path: 'stock', loadChildren: () => import('./stock/stock.module').then(m => m.StockModule) },
 ];
 
 @NgModule({
