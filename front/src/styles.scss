@@ -1,5 +1,6 @@
 @use "../node_modules/normalize.css/normalize.css";
 @use "../node_modules/sanitize.css/sanitize.css";
+@use "./scss/button.scss";
 
 body {
   font-family: sans-serif;
@@ -9,6 +10,7 @@ main {
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 0.5em;
 
   width: 100%;
   max-width: 100ch;
