@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { BodyComponent } from './body/body.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    BodyComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    BodyComponent
   ]
 })
 export class LayoutModule { }
