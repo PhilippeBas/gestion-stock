@@ -1,5 +1,21 @@
 @use "../node_modules/normalize.css/normalize.css";
+@use "../node_modules/sanitize.css/sanitize.css";
 
 body {
   font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 Auto;
+
+  p {
+    align-self: start;
+    padding: 0.5em;
+  }
 }
