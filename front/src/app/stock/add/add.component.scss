@@ -14,14 +14,14 @@ form {
       border: 0.1em solid #aaa;
       border-radius: 0.3em;
       padding: 0.5em 1em;
-    }
 
-    // &:disabled {
-    //   background-color: red;
-    // }
-    // &:valid {
-    //   background-color: green;
-    // }
+      &.ng-invalid {
+        border: 1px solid red;
+      }
+      &.ng-valid {
+        border: 1px solid green;
+      }
+    }
   }
 
   div.error {
