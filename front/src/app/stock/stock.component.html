@@ -2,13 +2,12 @@
   <h1>Liste des articles</h1>
   <div class="content">
     <nav>
-      <button title="Rafraichir">
+      <button title="Rafraîchir">
         <fa-icon [icon]="faRotateRight"></fa-icon>
       </button>
-      <a routerLink="add" class="button" title="" Ajouter>
+      <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-      <!-- <button title="Supprimer" *ngIf="selectedArticles.size > 0"> -->
       <button
         title="Supprimer"
         [hidden]="selectedArticles.size === 0"
@@ -21,7 +20,9 @@
         ></fa-icon>
       </button>
     </nav>
-    <div class="error"></div>
+    <div class="error">
+      {{ errorMsg }}
+    </div>
     <table>
       <thead>
         <tr>
@@ -31,7 +32,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- //* on ajoute asyncarticles$ | async pour l'observable -->
         <tr
           *ngFor="
             let a of articleService.articles$ | async;
