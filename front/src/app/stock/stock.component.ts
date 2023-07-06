@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from '../interfaces/article';
 import { ArticleService } from '../services/article.service';
+import { of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-stock',
@@ -13,14 +14,38 @@ import { ArticleService } from '../services/article.service';
   styleUrls: ['./stock.component.scss'],
 })
 export class StockComponent {
-  faRotateRight = faRotateRight;
   faPlus = faPlus;
+  faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
+  selectedArticles = new Set<Article>();
 
-  // constructor(public articleService: ArticleService) {}
   constructor(protected readonly articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
+  }
+
+  remove() {
+    console.log('remove');
+    of(undefined)
+      .pipe(
+        switchMap(() => {
+          const ids = [...this.selectedArticles].map((a) => a.id);
+          return this.articleService.remove(ids);
+        }),
+        switchMap(() => this.articleService.refresh()),
+        tap(() => {
+          this.selectedArticles.clear();
+        })
+      )
+      .subscribe();
+  }
+
+  select(a: Article) {
+    if (this.selectedArticles.has(a)) {
+      this.selectedArticles.delete(a);
+      return;
+    }
+    this.selectedArticles.add(a);
   }
 }
