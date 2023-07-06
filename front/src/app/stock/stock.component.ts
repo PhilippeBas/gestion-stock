@@ -17,7 +17,8 @@ export class StockComponent {
   faPlus = faPlus;
   faTrashCan = faTrashCan;
 
-  constructor(public articleService: ArticleService) {}
+  // constructor(public articleService: ArticleService) {}
+  constructor(protected readonly articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
