@@ -5,6 +5,7 @@ import {
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from '../interfaces/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-stock',
@@ -15,11 +16,8 @@ export class StockComponent {
   faRotateRight = faRotateRight;
   faPlus = faPlus;
   faTrashCan = faTrashCan;
-  articles: Article[] = [
-    { id: 'a1', name: 'Tounevis', price: 25, qty: 500 },
-    { id: 'a2', name: 'Disqueuse', price: 250, qty: 50 },
-    { id: 'a3', name: 'Marteau', price: 55, qty: 69 },
-  ];
+
+  constructor(public articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
