@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { catchError, delay, of, switchMap } from 'rxjs';
+import { NewArticle } from 'src/app/interfaces/article';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-add',
@@ -8,7 +12,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent {
-  faPlus = faPlus;
   // f: FormGroup<any> = new FormGroup({});
   f = new FormGroup({
     name: new FormControl('Truc', [
@@ -18,4 +21,32 @@ export class AddComponent {
     price: new FormControl(0, [Validators.required]),
     qty: new FormControl(0, [Validators.required]),
   });
+  faPlus = faPlus;
+  errorMsg = '';
+
+  constructor(
+    private readonly articleService: ArticleService,
+    private readonly routeur: Router
+  ) {}
+
+  submit() {
+    // throw new Error('Method not implemented.');
+    console.log('submit');
+    const newArticle: NewArticle = this.f.value as NewArticle;
+
+    // observable - lego de base
+    of(undefined)
+      .pipe(
+        delay(2000),
+        switchMap(() => this.articleService.add(newArticle)),
+        switchMap(() => this.articleService.refresh()),
+        switchMap(() => this.routeur.navigateByUrl('/stock')),
+        catchError((err) => {
+          console.log('err:', err);
+          this.errorMsg = 'Erreur Technique';
+          return of(undefined);
+        })
+      )
+      .subscribe();
+  }
 }

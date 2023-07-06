@@ -16,8 +16,20 @@ form {
       padding: 0.5em 1em;
     }
 
-    div.error {
-      height: 3em;
-    }
+    // &:disabled {
+    //   background-color: red;
+    // }
+    // &:valid {
+    //   background-color: green;
+    // }
+  }
+
+  div.error {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: red;
   }
 }
