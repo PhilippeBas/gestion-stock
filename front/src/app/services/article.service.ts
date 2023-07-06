@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article, NewArticle } from '../interfaces/article';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 
 //* déclaration de Article pour l'observable
 const articles: Article[] = [
@@ -20,10 +20,17 @@ export class ArticleService {
 
   add(newArticle: NewArticle): Observable<void> {
     // throw new Error('Method not implemented.');
-    return of(undefined);
+
+    return of(undefined).pipe(
+      tap(() => {
+        const article = { ...newArticle, id: crypto.randomUUID() };
+        articles.push(article);
+      })
+    );
   }
 
   refresh(): Observable<void> {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
+    return of(undefined);
   }
 }
