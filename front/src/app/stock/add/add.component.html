@@ -14,13 +14,11 @@
       <input type="number" formControlName="qty" />
     </label>
     <div class="error">{{ errorMsg }}</div>
-    <button
-      type="submit"
-      class="primary"
-      title="Ajouter"
-      [disabled]="f.invalid || isAdding"
-    >
-      <fa-icon [icon]="faPlus"></fa-icon>
+    <button type="submit" class="primary" [disabled]="f.invalid || isAdding">
+      <fa-icon
+        [icon]="isAdding ? faCircleNotch : faPlus"
+        [spin]="isAdding"
+      ></fa-icon>
       <span>Ajouter</span>
     </button>
     <!-- * Pour voir le resultat des input -->
